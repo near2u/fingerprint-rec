@@ -1,0 +1,10 @@
+WITH RECURSIVE 
+odd_no (LEVEL, fromcol) AS
+(
+SELECT 0, tocol FROM renumbred WHERE FROMCOL='abc'
+union all
+SELECT LEVEL+1, A.TOCOL FROM renumbred A, odd_no WHERE A.FROMCOL = odd_no.FROMCOL
+)
+SELECT FROMCOL 
+FROM odd_no 
+ORDER BY LEVEL DESC limit 1;
